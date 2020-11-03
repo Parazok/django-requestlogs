@@ -109,8 +109,10 @@ class RequestLogEntry(object):
         user = self._user or getattr(self.django_request, 'user', None)
         if user and user.is_authenticated:
             ret['id'] = user.id
-            ret.get('username','Not Found!') = user.username
-
+            try:
+                ret['username'] = user.username
+            except:
+                ret['username'] = 'no username'
         return ret
 
     @user.setter
