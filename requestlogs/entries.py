@@ -26,7 +26,7 @@ class RequestHandler(object):
         return remove_secrets(self.request.GET)
 
     @property
-    def full_path(self):
+    def full_path(selff
         return self.request.get_full_path()
 
     @property
@@ -109,7 +109,7 @@ class RequestLogEntry(object):
         user = self._user or getattr(self.django_request, 'user', None)
         if user and user.is_authenticated:
             ret['id'] = user.id
-            ret['username'] = user.username
+            ret.get('username','Not Found!') = user.username
 
         return ret
 
